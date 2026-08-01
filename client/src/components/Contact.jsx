@@ -1,12 +1,69 @@
+import { useState } from "react";
 import {
   FaEnvelope,
   FaPhone,
-  FaLinkedin,
-  FaGithub,
   FaMapMarkerAlt,
 } from "react-icons/fa";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  console.log("Button Clicked");
+  console.log(formData);
+
+  setLoading(true);
+
+    try {
+      const response = await fetch(
+        "https://ananyagupta-portfolio.onrender.com/api/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("✅ Message Sent Successfully!");
+
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      alert("❌ Something went wrong!");
+      console.log(error);
+    }
+
+    setLoading(false);
+  };
+
   return (
     <section className="contact" id="contact">
 
@@ -16,64 +73,72 @@ function Contact() {
 
       <div className="contact-container">
 
-        {/* Contact Form */}
-
-        <form className="contact-form">
+        <form className="contact-form" onSubmit={handleSubmit}>
 
           <input
             type="text"
+            name="name"
             placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
             required
           />
 
           <input
             type="email"
+            name="email"
             placeholder="Your Email"
+            value={formData.email}
+            onChange={handleChange}
             required
           />
 
           <input
             type="text"
+            name="subject"
             placeholder="Subject"
+            value={formData.subject}
+            onChange={handleChange}
+            required
           />
 
           <textarea
             rows="6"
+            name="message"
             placeholder="Write your message..."
+            value={formData.message}
+            onChange={handleChange}
             required
-          ></textarea>
+          />
 
           <button type="submit">
-            Send Message
+            {loading ? "Sending..." : "Send Message"}
           </button>
 
         </form>
 
-        {/* Contact Details */}
-
         <div className="contact-info">
 
-  <p>
-    <FaEnvelope className="contact-inline-icon" />
-    <a href="mailto:ananyagupta315@gmail.com">
-      ananyagupta315@gmail.com
-    </a>
-  </p>
+          <p>
+            <FaEnvelope className="contact-inline-icon" />
+            <a href="mailto:ananyagupta315@gmail.com">
+              ananyagupta315@gmail.com
+            </a>
+          </p>
 
-  <p>
-    <FaPhone className="contact-inline-icon" />
-    <a href="tel:+916006623522">
-      +91 6006623522
-    </a>
-  </p>
+          <p>
+            <FaPhone className="contact-inline-icon" />
+            <a href="tel:+916006623522">
+              +91 6006623522
+            </a>
+          </p>
 
-  <p>
-    <FaMapMarkerAlt className="contact-inline-icon" />
-    Dehradun, Uttarakhand, India
-  </p>
+          <p>
+            <FaMapMarkerAlt className="contact-inline-icon" />
+            Dehradun, Uttarakhand, India
+          </p>
 
-</div>
-
+        </div>
 
       </div>
 
