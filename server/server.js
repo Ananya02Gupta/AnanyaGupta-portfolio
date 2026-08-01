@@ -1,10 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
+import dns from "dns";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import contactRoutes from "./routes/contactRoutes.js";
 
 dotenv.config();
+
+dns.setDefaultResultOrder("ipv4first");
 console.log("EMAIL_USER:", process.env.EMAIL_USER);
 console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
 
