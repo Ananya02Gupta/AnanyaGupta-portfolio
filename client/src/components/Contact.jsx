@@ -47,8 +47,6 @@ console.log("URL:", response.url);
 const data = await response.json();
 console.log("Response:", data);
 
-      const data = await response.json();
-
       if (data.success) {
         alert("✅ Message Sent Successfully!");
 
