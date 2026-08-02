@@ -1,7 +1,6 @@
 import nodemailer from "nodemailer";
 
 const sendEmail = async ({ name, email, subject, message }) => {
-
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
@@ -26,11 +25,19 @@ const sendEmail = async ({ name, email, subject, message }) => {
     `,
   };
 
-  console.log("Sending email...");
+  try {
+    console.log("Verifying SMTP...");
+    await transporter.verify();
+    console.log("SMTP Connected");
 
-  const info = await transporter.sendMail(mailOptions);
+    console.log("Sending email...");
+    const info = await transporter.sendMail(mailOptions);
 
-  console.log("Email sent:", info.response);
+    console.log("Email sent:", info.response);
+  } catch (err) {
+    console.error("EMAIL ERROR:", err);
+    throw err;
+  }
 };
 
 export default sendEmail;
