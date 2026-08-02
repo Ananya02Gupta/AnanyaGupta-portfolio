@@ -37,7 +37,7 @@ const projects = [
     description:
       "A responsive personal portfolio website showcasing my skills, internships, projects and contact information.",
     tech: "React • CSS • JavaScript",
-    github: "https://github.com/Ananya02Gupta/AnanyaGupta-portfolio/",
+    github: "https://github.com/Ananya02Gupta/AnanyaGupta-portfolio.git",
     demo: "https://ananya-gupta-portfolio.vercel.app/",
   },
 
