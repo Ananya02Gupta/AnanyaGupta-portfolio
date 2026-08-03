@@ -71,14 +71,30 @@ font-size:26px;
 cursor:pointer;
 }
 
-@media(max-width:768px){
+@media (max-width:768px){
 
 .nav-links{
-display:none;
+    display:none;
+    position:absolute;
+    top:80px;
+    left:0;
+    width:100%;
+    background:#1e1b4b;
+    flex-direction:column;
+    text-align:center;
+    padding:20px 0;
+    gap:20px;
+}
+
+.nav-links.active{
+    display:flex;
 }
 
 .menu-icon{
-display:block;
+    display:block;
+    font-size:30px;
+    cursor:pointer;
+    z-index:1001;
 }
 
 }
