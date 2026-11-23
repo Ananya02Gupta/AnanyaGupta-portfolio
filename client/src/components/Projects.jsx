@@ -1,3 +1,4 @@
+
 import {
   FaCloudSun,
   FaMoneyBillWave,
@@ -8,9 +9,20 @@ import {
   FaLaptopCode,
   FaGithub,
   FaExternalLinkAlt,
+  FaBriefcase,
 } from "react-icons/fa";
 
 const projects = [
+  {
+    icon: <FaBriefcase />,
+    title: "HireWise",
+    description:
+      "An AI-powered career platform designed to help users with smart resume analysis, job-related insights and career guidance through an interactive interface.",
+    tech: "React • JavaScript • CSS • AI Integration",
+    github: "https://github.com/Ananya02Gupta/HireWise.git",
+    demo: "https://hire-wise-gamma.vercel.app/",
+  },
+
   {
     icon: <FaMoneyBillWave />,
     title: "Expense Tracker",
@@ -47,10 +59,8 @@ const projects = [
     description:
       "Responsive image gallery with beautiful layout, hover effects and modern UI.",
     tech: "HTML • CSS • JavaScript",
-    github:
-      "https://github.com/Ananya02Gupta/CodeAlpha_Image_Gallery",
-    demo:
-      "https://ananya02gupta.github.io/CodeAlpha_Image_Gallery/",
+    github: "https://github.com/Ananya02Gupta/CodeAlpha_Image_Gallery",
+    demo: "https://ananya02gupta.github.io/CodeAlpha_Image_Gallery/",
   },
 
   {
@@ -59,10 +69,8 @@ const projects = [
     description:
       "Simple and responsive task management application to add, complete and delete daily tasks.",
     tech: "HTML • CSS • JavaScript",
-    github:
-      "https://github.com/Ananya02Gupta/TO-DO-LIST",
-    demo:
-      "https://ananya02gupta.github.io/TO-DO-LIST/",
+    github: "https://github.com/Ananya02Gupta/TO-DO-LIST",
+    demo: "https://ananya02gupta.github.io/TO-DO-LIST/",
   },
 
   {
@@ -71,10 +79,8 @@ const projects = [
     description:
       "Modern calculator with responsive interface supporting all basic arithmetic operations.",
     tech: "HTML • CSS • JavaScript",
-    github:
-      "https://github.com/Ananya02Gupta/CodeAlpha_Calculator",
-    demo:
-      "https://ananya02gupta.github.io/CodeAlpha_Calculator/",
+    github: "https://github.com/Ananya02Gupta/CodeAlpha_Calculator",
+    demo: "https://ananya02gupta.github.io/CodeAlpha_Calculator/",
   },
 
   {
@@ -83,10 +89,8 @@ const projects = [
     description:
       "A responsive website developed using modern web technologies with clean design and user-friendly interface.",
     tech: "HTML • CSS • JavaScript",
-    github:
-      "https://github.com/Ananya02Gupta/My-website",
-    demo:
-      "https://ananya02gupta.github.io/My-website/",
+    github: "https://github.com/Ananya02Gupta/My-website",
+    demo: "https://ananya02gupta.github.io/My-website/",
   },
 ];
 
@@ -109,14 +113,16 @@ function Projects() {
             <small>{project.tech}</small>
 
             <div className="project-buttons">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                className="btn"
-              >
-                <FaGithub /> GitHub
-              </a>
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn"
+                >
+                  <FaGithub /> GitHub
+                </a>
+              )}
 
               <a
                 href={project.demo}
